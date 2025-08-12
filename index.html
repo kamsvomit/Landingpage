@@ -1,0 +1,528 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARBURATORZ13 - Custom Sablon Kaos Bandung</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .logo span {
+            color: #f8c400;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f8c400;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1597346908612-6b2688521a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #f8c400;
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #f8c400;
+            color: #fff;
+        }
+
+        .btn-outline:hover {
+            background: #f8c400;
+            color: #000;
+        }
+
+        .services {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #000;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #f8c400;
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            color: #f8c400;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .portfolio {
+            background: #f1f1f1;
+            padding: 80px 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 300px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .about {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact {
+            background: #000;
+            color: #fff;
+            padding: 80px 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #f8c400;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #f1f1f1;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #f8c400;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">KARBURATORZ<span>13</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#portfolio">Portofolio</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Custom Sablon Kaos Bandung</h1>
+            <p>KARBURATORZ13 menyediakan jasa pembuatan kaos custom berkualitas tinggi di Bandung dengan desain sesuai keinginan Anda. Kualitas terbaik, harga terjangkau!</p>
+            <div>
+                <a href="#contact" class="btn">Pesan Sekarang</a>
+                <a href="#portfolio" class="btn btn-outline">Lihat Portofolio</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Layanan Kami</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">👕</div>
+                    <h3>Sablon DTG</h3>
+                    <p>Direct to Garment dengan hasil cetak detail dan warna yang tajam. Cocok untuk desain kompleks dan berwarna-warni.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Sablon Plastisol</h3>
+                    <p>Teknik sablon profesional dengan hasil tahan lama dan warna yang solid. Paling populer untuk kaos distro.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧵</div>
+                    <h3>Custom Design</h3>
+                    <p>Butuh desain? Tim kreatif kami siap membantu mewujudkan ide Anda menjadi desain kaos yang keren.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portofolio Kami</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1528772362581-16fe6d38f91c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kaos 1">
+                    <div class="portfolio-overlay">
+                        <h3>Kaos Komunitas</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kaos 2">
+                    <div class="portfolio-overlay">
+                        <h3>Kaos Event</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1591405351990-34c0f0946d2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kaos 3">
+                    <div class="portfolio-overlay">
+                        <h3>Kaos Brand</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1583744946564-b52d01a7f418?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kaos 4">
+                    <div class="portfolio-overlay">
+                        <h3>Kaos Keren</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Tentang KARBURATORZ13</h3>
+                    <p>KARBURATORZ13 adalah studio custom sablon kaos profesional yang berlokasi di Bandung. Kami berdiri sejak 2013 dengan komitmen menyediakan produk berkualitas tinggi untuk pelanggan kami.</p>
+                    <p>Dengan pengalaman lebih dari 10 tahun di industri garment, kami telah melayani ribuan pelanggan dari berbagai kalangan, mulai dari komunitas, event organizer, brand lokal, hingga perusahaan besar.</p>
+                    <p>Kami menggunakan bahan katun berkualitas premium dan teknik sablon terbaik untuk memastikan kaos yang Anda terima tidak hanya nyaman dipakai tetapi juga tahan lama.</p>
+                    <p>Tim kami terdiri dari desainer kreatif dan teknisi sablon berpengalaman yang siap membantu mewujudkan ide Anda menjadi kenyataan.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560419054-6c19f7b3b0c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tentang Kami">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Hubungi Kami</h3>
+                    <p><i>📍</i> Jl. Ahmad Yani No.13, Bandung, Jawa Barat</p>
+                    <p><i>📞</i> 0812-3456-7890 (WhatsApp)</p>
+                    <p><i>📧</i> info@karburatorz13.com</p>
+                    <p><i>⏰</i> Senin - Sabtu: 09.00 - 17.00 WIB</p>
+                    <p>Kami siap membantu Anda mewujudkan ide kaos custom terbaik. Pesan sekarang dan dapatkan penawaran spesial untuk order pertama Anda!</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Nomor WhatsApp">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Deskripsi pesanan Anda (jenis kaos, jumlah, desain, dll)"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">KARBURATORZ<span>13</span></div>
+            <p>© 2023 KARBURATORZ13 - Custom Sablon Kaos Bandung. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#">📱</a>
+                <a href="#">📸</a>
+                <a href="#">📘</a>
+                <a href="#">▶️</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        const form = document.querySelector('.contact-form form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah kami terima. Kami akan segera menghubungi Anda melalui WhatsApp atau email.');
+            form.reset();
+        });
+    </script>
+</body>
+</html>
